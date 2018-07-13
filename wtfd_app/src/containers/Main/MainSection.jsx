@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
 const Section = styled.section`
-  width: 800px;
+  width: 850px;
   margin: auto;
 `
 
@@ -15,6 +15,8 @@ const ReadMeContent = styled.article`
 const MainSection = ({ readme }) =>
   <Section>
     <ReadMeContent>
+      <ReactMarkdown source={readme}/>
+      <ReactMarkdown source={readme}/>
       <ReactMarkdown source={readme}/>
     </ReadMeContent>
   </Section>

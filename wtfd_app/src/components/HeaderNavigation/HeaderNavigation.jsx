@@ -9,7 +9,7 @@ const Wrapper = styled.header`
 `
 
 const Content = styled.nav`
-  width: 1140px;
+  width: 850px;
   height: 20px;
   margin: auto;
   padding: 21px 0;
