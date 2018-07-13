@@ -3,6 +3,8 @@ import axios from 'axios';
 import { HeaderNavigation } from '../../components';
 import MainSection from './MainSection';
 
+import { USER_NAME, REPOSITORY_NAME } from '../../config';
+
 class Main extends Component {
   state = {
     readme: ''
@@ -10,7 +12,7 @@ class Main extends Component {
 
   componentDidMount = async () => {
     try {
-      const response = await axios.get('https://api.github.com/repos/What-the-frontend/WTFd/readme');
+      const response = await axios.get(`https://api.github.com/repos/${USER_NAME}/${REPOSITORY_NAME}/readme`);
       this.setState({
         readme: atob(response.data.content)
       });
