@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Wrapper = styled.header`
+const Header = styled.header`
   width: 100%;
   height: 60px;
   border-bottom: 1px solid #ddd;
 `
 
-const Content = styled.nav`
+const Navigation = styled.nav`
   width: 850px;
   height: 20px;
   margin: auto;
@@ -22,11 +22,11 @@ const NavItem = styled(Link)`
 `
 
 const HeaderNavigation = () =>
-  <Wrapper>
-    <Content>
+  <Header>
+    <Navigation>
       <NavItem to='/'>HOME</NavItem>
       <NavItem to='/'>GITHUB</NavItem>
-    </Content>
-  </Wrapper>
+    </Navigation>
+  </Header>
 
 export default HeaderNavigation;
