@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
-import { Main } from './containers';
+import { Main, AsideMenu } from './containers';
 
 injectGlobal`
   body {
@@ -14,6 +14,11 @@ injectGlobal`
 const root = document.getElementById('root');
 render(
   <Router>
-    <Route exact path='/' component={Main} />
+    <Fragment>
+      <AsideMenu />
+      <Switch>
+        <Route exact path='/' component={Main} />
+      </Switch>
+    </Fragment>
   </Router>
 , root);

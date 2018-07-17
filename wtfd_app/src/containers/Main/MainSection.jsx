@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
 const Section = styled.section`
+  float: left;
   width: 850px;
-  margin: auto;
+  height: 100vh;
+  padding-left: 50px;
+  box-sizing: border-box;
+  overflow: scroll;
 `
 
 const ReadMeContent = styled.article`
@@ -15,8 +19,6 @@ const ReadMeContent = styled.article`
 const MainSection = ({ readme }) =>
   <Section>
     <ReadMeContent>
-      <ReactMarkdown source={readme}/>
-      <ReactMarkdown source={readme}/>
       <ReactMarkdown source={readme}/>
     </ReadMeContent>
   </Section>

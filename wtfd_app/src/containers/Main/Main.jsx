@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { HeaderNavigation } from '../../components';
 import MainSection from './MainSection';
 
 import { USER_NAME, REPOSITORY_NAME } from '../../config';
@@ -24,7 +23,6 @@ class Main extends Component {
   render() {
     return (
       <Fragment>
-        <HeaderNavigation />
         <MainSection readme={this.state.readme} />
       </Fragment>
     );
