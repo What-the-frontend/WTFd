@@ -21,8 +21,8 @@ const ItemImg = styled.img`
   object-fit: contain;
 `
 
-const AsideNavItem = ({ name }) =>
-  <NavItem>
+const AsideNavItem = ({ name, onNavItemClick }) =>
+  <NavItem id={name} onClick={onNavItemClick}>
     <ItemImg
       src={`https://raw.githubusercontent.com/${ORGANIZATION_NAME}/${name}/master/repo-logo.png`}
       alt={name}/>

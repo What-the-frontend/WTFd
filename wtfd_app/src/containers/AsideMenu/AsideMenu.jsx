@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import AsideNav from './AsideNav';
+import AsideDirTree from './AsideDirTree';
 import { ORGANIZATION_NAME } from '../../config';
 
 class AsideMenu extends Component {
   state = {
-    repos: []
+    repos: [],
+    tree: []
   }
 
   componentDidMount = async () => {
@@ -19,9 +21,27 @@ class AsideMenu extends Component {
     }
   }
 
+  onNavItemClick = async e => {
+    try {
+      const response = await axios.get(`https://api.github.com/repos/${ORGANIZATION_NAME}/${e.currentTarget.id}/git/trees/master`);
+      console.log(response);
+      this.setState({
+        tree: response.data.tree
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   render() {
     return (
-      <AsideNav repoNames={this.state.repos} />
+      <Fragment>
+        <AsideNav
+          repoNames={this.state.repos}
+          onNavItemClick={this.onNavItemClick}/>
+        <AsideDirTree
+          tree={this.state.tree}/>
+      </Fragment>
     );
   }
 }
