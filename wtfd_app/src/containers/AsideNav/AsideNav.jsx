@@ -1,13 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import AsideNav from './AsideNav';
-import AsideDirTree from './AsideDirTree';
+import styled from 'styled-components';
+import AsideNavItem from './AsideNavItem';
 import { ORGANIZATION_NAME } from '../../config';
 
-class AsideMenu extends Component {
+const Nav = styled.nav`
+  float: left;
+  width: 70px;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #9b9b9b;
+`
+
+class AsideNav extends Component {
   state = {
-    repos: [],
-    tree: []
+    repos: []
   }
 
   componentDidMount = async () => {
@@ -24,7 +32,6 @@ class AsideMenu extends Component {
   onNavItemClick = async e => {
     try {
       const response = await axios.get(`https://api.github.com/repos/${ORGANIZATION_NAME}/${e.currentTarget.id}/git/trees/master`);
-      console.log(response);
       this.setState({
         tree: response.data.tree
       });
@@ -35,15 +42,19 @@ class AsideMenu extends Component {
 
   render() {
     return (
-      <Fragment>
-        <AsideNav
-          repoNames={this.state.repos}
-          onNavItemClick={this.onNavItemClick}/>
-        <AsideDirTree
-          tree={this.state.tree}/>
-      </Fragment>
+      <Nav>
+        {
+          this.state.repos.map(name =>
+            name !== 'WTFd'
+              ? <AsideNavItem
+                  name={name}
+                  onNavItemClick={this.onNavItemClick}
+                  key={name}/> : null
+          )
+        }
+      </Nav>
     );
   }
 }
 
-export default AsideMenu;
+export default AsideNav;

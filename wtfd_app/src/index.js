@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
-import { Main, AsideMenu } from './containers';
+import { Main, AsideNav, AsideDirTree } from './containers';
 
 injectGlobal`
   body {
@@ -16,7 +16,8 @@ const root = document.getElementById('root');
 render(
   <Router>
     <Fragment>
-      <AsideMenu />
+      <AsideNav />
+      <AsideDirTree />
       <Switch>
         <Route exact path='/' component={Main} />
       </Switch>
